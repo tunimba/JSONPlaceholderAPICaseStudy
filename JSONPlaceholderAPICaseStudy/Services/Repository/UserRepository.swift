@@ -7,16 +7,9 @@
 
 import Foundation
 
-protocol UserRepositoryProtocol {
-  var apiClient: UserNetworkProtocol { get }
-  var databaseClient: UserStorageProtocol { get }
-  func getAllUsers() async throws -> [User]
-  func getSingleUser(userId: Int) async throws -> User
-}
-
 class UserRepository: UserRepositoryProtocol {
-  let apiClient: UserNetworkProtocol
-  let databaseClient: UserStorageProtocol
+  private let apiClient: UserNetworkProtocol
+  private let databaseClient: UserStorageProtocol
 
   init(apiClient: UserNetworkProtocol = NetworkService(),
        databaseClient: UserStorageProtocol = LocalDataStorage()) {

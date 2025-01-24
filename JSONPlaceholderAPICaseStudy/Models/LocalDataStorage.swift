@@ -7,12 +7,6 @@
 
 import Foundation
 
-protocol UserStorageProtocol {
-  func getAllUsers() -> [User]
-  func getSingleUser(userId: Int) -> User?
-  func saveUsers(users: [User])
-}
-
 class LocalDataStorage: UserStorageProtocol {
   private let defaults = UserDefaults.standard
   private let key = "saved_users"

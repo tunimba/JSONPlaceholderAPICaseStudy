@@ -7,16 +7,21 @@
 
 import Foundation
 
+// MARK: Protocol
+///Abstracts API requests
+protocol UserNetworkProtocol {
+  func fetchUsers() async throws -> [User]
+}
+
+// MARK: - Network Layer
+///Enum representing network errors
 enum NetworkError: Error {
   case invalidURL
   case invalidResponse
   case invalidStatusCode
 }
 
-protocol UserNetworkProtocol {
-  func fetchUsers() async throws -> [User]
-}
-
+///Implementation for API calls
 class NetworkService: UserNetworkProtocol {
 
   func fetchUsers() async throws -> [User] {
