@@ -18,7 +18,8 @@ class UserRepository: UserRepositoryProtocol {
   let apiClient: UserNetworkProtocol
   let databaseClient: UserStorageProtocol
 
-  init(apiClient: UserNetworkProtocol, databaseClient: any UserStorageProtocol) {
+  init(apiClient: UserNetworkProtocol = NetworkService(),
+       databaseClient: UserStorageProtocol = LocalDataStorage()) {
     self.apiClient = apiClient
     self.databaseClient = databaseClient
   }
