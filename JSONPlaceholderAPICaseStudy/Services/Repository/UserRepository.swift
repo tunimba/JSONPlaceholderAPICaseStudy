@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Manages the user data by acting as a bridge between the network layer and local storage.
+// It uses apiClient to fetch data from the network and databaseClient to handle persistent storage.
 class UserRepository: UserRepositoryProtocol {
   private let apiClient: UserNetworkProtocol
   private let databaseClient: UserStorageProtocol

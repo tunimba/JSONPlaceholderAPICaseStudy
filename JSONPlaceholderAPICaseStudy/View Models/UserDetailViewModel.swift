@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Manages the logic for fetching and displaying details of a specific user.
+// Utilizes UserRepositoryProtocol for fetching data from the network or local storage.
 @Observable
 class UserDetailViewModel {
   var user: UserDetailItem?

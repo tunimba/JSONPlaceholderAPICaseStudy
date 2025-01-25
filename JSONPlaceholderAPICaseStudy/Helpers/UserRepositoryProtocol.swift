@@ -7,9 +7,8 @@
 
 import Foundation
 
-// MARK: Protocol
-/// Fetches all users asynchronously.
-/// Fetches a single user with the specified ID asynchronously.
+// Defines the operations for managing user data.
+// Abstracts the implementation details of user data retrieval and storage.
 protocol UserRepositoryProtocol {
   func getAllUsers() async throws -> [User]
   func getSingleUser(userId: Int) async throws -> User

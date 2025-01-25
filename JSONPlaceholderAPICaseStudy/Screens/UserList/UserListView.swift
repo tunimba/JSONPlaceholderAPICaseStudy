@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+// Displays a list of users fetched from the server.
+// Uses UserListViewModel to manage the data and navigation to the detail view.
 struct UserListView: View {
   let viewModel = UserListViewModel()
   @Environment(\.colorScheme) var colorScheme

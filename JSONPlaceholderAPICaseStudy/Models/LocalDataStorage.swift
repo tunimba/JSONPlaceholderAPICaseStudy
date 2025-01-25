@@ -7,6 +7,8 @@
 
 import Foundation
 
+// Implements the UserStorageProtocol to manage user data using UserDefaults.
+// Provides basic functionalities for saving and retrieving users persistently.
 class LocalDataStorage: UserStorageProtocol {
   private let defaults = UserDefaults.standard
   private let key = "saved_users"

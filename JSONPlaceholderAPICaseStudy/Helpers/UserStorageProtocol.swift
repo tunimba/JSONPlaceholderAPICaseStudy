@@ -7,8 +7,8 @@
 
 import Foundation
 
-// MARK: Protocol
-/// Abstracts local storage operations
+// Defines the operations for interacting with persistent user data storage.
+// Enables saving, retrieving, and managing user data locally.
 protocol UserStorageProtocol {
   func getAllUsers() -> [User]
   func getSingleUser(userId: Int) -> User?

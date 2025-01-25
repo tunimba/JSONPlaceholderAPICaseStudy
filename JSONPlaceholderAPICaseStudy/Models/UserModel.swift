@@ -7,7 +7,8 @@
 
 import Foundation
 
-// MARK: - User Model for JSONPlaceholder API
+// Represents a user object with all necessary details.
+// Conforms to Identifiable and Codable for use in SwiftUI lists and easy encoding/decoding.
 struct User: Identifiable, Codable {
   let id: Int
   let name: String
@@ -16,8 +17,8 @@ struct User: Identifiable, Codable {
   let website: String
 }
 
-// MARK: - Sub-structs of User Model to only use necessary variables in Views
-// Items for UserlistView & UserDetailView
+// Represents a simplified version of the User object for list displays in the UI.
+// Extracts only the necessary fields (id, name, email) for better performance and reduced data handling.
 struct UserListItem: Identifiable {
   let id: Int
   let name: String
@@ -30,6 +31,8 @@ struct UserListItem: Identifiable {
   }
 }
 
+// Represents a detailed version of the User object for the detail view in the UI.
+// Contains all user properties for comprehensive display.
 struct UserDetailItem: Identifiable {
   let id: Int
   let name: String
