@@ -19,18 +19,18 @@ Proje, **MVVM** (Model-View-ViewModel) prensipleri doğrultusunda katmanlara ayr
 git clone https://github.com/<kullanıcıAdınız>/<repoAdı>.git
 cd <repoAdı>
 
-### 2. Projenin Açılması
+## 2. Projenin Açılması
 * Proje klasöründeki `.xcodeproj` veya `.xcworkspace` dosyasına çift tıklayarak Xcode'da açın.
 * (Örnek: `MySwiftUIProject.xcodeproj`)
 
-### 3. Cihaz veya Simülatör Seçimi  
+## 3. Cihaz veya Simülatör Seçimi  
 * Xcode menüsünden, projeyi çalıştıracağınız iPhone veya simülatörü seçin (Örnek: `iPhone 14 Pro`).
 
-### 4. Derleme ve Çalıştırma
+## 4. Derleme ve Çalıştırma
 * Sol üstteki "Run" (►) butonuna basın veya `Cmd + R` kısayolunu kullanın.
 * Uygulama başarıyla derlendikten sonra seçtiğiniz cihaza/simülatöre yüklenecektir.
 
-### 5. Kullanım
+## 5. Kullanım
 * Uygulama açıldığında otomatik olarak JSONPlaceholder'dan kullanıcı verisi çeker ve bir liste halinde gösterir.
 * Liste elemanına dokunduğunuzda kullanıcıya özel detay sayfasına yönlendirilirsiniz.
 * Veriler, `UserDefaults` içine kaydedildiği için uygulamayı tekrar açtığınızda daha önce yüklenen veriler görüntülenebilir.
