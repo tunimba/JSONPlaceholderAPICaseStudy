@@ -7,47 +7,36 @@ Bu proje, bir **case study** olarak **JSONPlaceholder** servisine ait `/users` e
 * Ana ekranda kullanıcıların **isim** ve **email** bilgileri bir liste halinde gösterilir.
 * Her bir kullanıcıya tıklandığında **detay ekranı** açılır ve seçili kullanıcıya ait **isim**, **email**, **telefon numarası** ve **web sitesi** bilgileri görüntülenir.
 
-## Mimari
+# Nasıl Çalıştırılır?
 
-Proje, **MVVM** (Model-View-ViewModel) prensipleri doğrultusunda katmanlara ayrılmıştır. Ağ üzerinden çekilen veriler, **UserDefaults** aracılığıyla yerel olarak da saklanabilir. Böylece uygulama kapatılıp yeniden açıldığında verileri koruyabilmektedir.
+## 1) Depoyu Klonla
 
-## Nasıl Çalıştırılır?
+git clone https://github.com/tunimba/JSONPlaceholderAPICaseStudy.git ya da
+Proje dosyasını indirin.
 
-### 1. Depoyu Klonla
+## 2) Projenin Açılması
 
-```bash
-git clone https://github.com/<kullanıcıAdınız>/<repoAdı>.git
-cd <repoAdı>
+* Proje klasöründeki .xcodeproj veya .xcworkspace dosyasına çift tıklayarak Xcode'da açın.
 
-2. Projenin Açılması
+## 3) Cihaz veya Simülatör Seçimi
 
-Proje klasöründeki .xcodeproj veya .xcworkspace dosyasına çift tıklayarak Xcode'da açın.
-(Örnek: MySwiftUIProject.xcodeproj)
+* Xcode menüsünden, projeyi çalıştıracağınız iPhone veya simülatörü seçin (Örnek: iPhone 14 Pro).
 
-3. Cihaz veya Simülatör Seçimi
+## 4) Derleme ve Çalıştırma
 
-Xcode menüsünden, projeyi çalıştıracağınız iPhone veya simülatörü seçin (Örnek: iPhone 14 Pro).
+* Sol üstteki “Run” (►) butonuna basın veya Cmd + R kısayolunu kullanın.
+* Uygulama başarıyla derlendikten sonra seçtiğiniz cihaza/simülatöre yüklenecektir.
 
-4. Derleme ve Çalıştırma
+## 5) Kullanım
 
-Sol üstteki "Run" (►) butonuna basın veya Cmd + R kısayolunu kullanın.
-Uygulama başarıyla derlendikten sonra seçtiğiniz cihaza/simülatöre yüklenecektir.
+* Uygulama açıldığında otomatik olarak JSONPlaceholder’dan kullanıcı verisi çeker ve bir liste halinde gösterir.
+* Liste elemanına dokunduğunuzda kullanıcıya özel detay sayfasına yönlendirilirsiniz.
 
-5. Kullanım
+# Gereksinimler
 
-Uygulama açıldığında otomatik olarak JSONPlaceholder'dan kullanıcı verisi çeker ve bir liste halinde gösterir.
-Liste elemanına dokunduğunuzda kullanıcıya özel detay sayfasına yönlendirilirsiniz.
-Veriler, UserDefaults içine kaydedildiği için uygulamayı tekrar açtığınızda daha önce yüklenen veriler görüntülenebilir.
+* iOS 17.0+
+* (Herhangi bir harici paket yönetimi aracı kullanılmamıştır.)
+  
+# Ek Not
 
-Gereksinimler
-
-Swift 5 veya üzeri
-Xcode 14 veya üzeri
-iOS 16.0+
-(Herhangi bir harici paket yönetimi aracı kullanılmamıştır.)
-
-Ek Notlar
-
-İnternet bağlantısı gereklidir (API çağrısı için).
-Model, ViewModel ve View yapıları ayrı dosyalarda organize edilmiştir.
-Uygulamadaki User, UserListItem ve UserDetailItem modelleri, verilerin ayrı ekranlarda daha kolay yönetilmesini sağlamaktadır.
+* İnternet bağlantısı gereklidir (API çağrısı için).
