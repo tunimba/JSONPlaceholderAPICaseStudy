@@ -16,7 +16,7 @@ proje dosyasını indirin.
 
 ## 2) Projenin Açılması
 
-* Proje klasöründeki .xcodeproj veya .xcworkspace dosyasına çift tıklayarak Xcode'da açın.
+* Proje klasöründeki .xcodeproj dosyasına çift tıklayarak Xcode'da açın.
 
 ## 3) Cihaz veya Simülatör Seçimi
 
