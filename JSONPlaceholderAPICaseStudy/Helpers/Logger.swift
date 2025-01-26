@@ -12,6 +12,5 @@ extension Logger {
   private static let subsystem = Bundle.main.bundleIdentifier!
 
   static let networking = Logger(subsystem: subsystem, category: "Networking")
-  static let userInterface = Logger(subsystem: subsystem, category: "UserInterface")
   static let storage = Logger(subsystem: subsystem, category: "Storage")
 }
