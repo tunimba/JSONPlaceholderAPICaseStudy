@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct JSONPlaceholderAPICaseStudyApp: App {
+  /// Main scene of the application
+  /// - Returns: Initial view of the application using coordinator pattern
     var body: some Scene {
         WindowGroup {
-            UserListView()
+          UserListCoordinator.shared.start()
         }
     }
 }

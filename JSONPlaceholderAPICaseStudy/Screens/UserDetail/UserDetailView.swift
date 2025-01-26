@@ -7,28 +7,18 @@
 
 import SwiftUI
 
-// Displays detailed information about a specific user.
-// Uses UserDetailViewModel to fetch and manage the data.
+/// View displaying detailed information about a specific user.
 struct UserDetailView: View {
   let userId: Int
-  let viewModel = UserDetailViewModel()
-  @Environment(\.colorScheme) var colorScheme
-  let colors: [Color] = [.blue, .green, .orange, .purple, .red, .yellow]
+  let viewModel: UserDetailViewModel
 
   var body: some View {
+    NavigationStack {
     Group {
       if let user = viewModel.user {
-        VStack(spacing: 32) {
-          Spacer()
-            .frame(height: 20)
-
-          Image(systemName: "person.circle.fill")
-            .font(.system(size: 100))
-            .foregroundColor(colors[(userId - 1) % colors.count])
-
+        VStack {
           Text(user.name)
-            .font(.system(size: 28, weight: .bold))
-            .textSelection(.enabled)
+            .font(.title)
 
           VStack(alignment: .leading, spacing: 24) {
             ContactInfoRow(icon: "envelope.fill", value: user.email, color: .blue)
@@ -36,48 +26,50 @@ struct UserDetailView: View {
             ContactInfoRow(icon: "globe", value: user.website, color: .purple)
           }
           .padding(24)
-          .background(
-            RoundedRectangle(cornerRadius: 16)
-              .fill(colorScheme == .dark ? Color(UIColor.systemGray6) : .white)
-              .shadow(radius: 4)
-          )
           .padding(.horizontal)
-
-          Spacer()
-          Spacer()
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(colorScheme == .dark ? Color.black : Color.white)
+        .padding(.bottom, 256)
       } else {
         ProgressView()
           .scaleEffect(1.5)
       }
     }
+  }
     .task {
       await viewModel.fetchUser(id: userId)
     }
   }
+}
 
-  private struct ContactInfoRow: View {
-    let icon: String
-    let value: String
-    let color: Color
-    
-    var body: some View {
-      HStack(spacing: 16) {
-        Image(systemName: icon)
-          .font(.system(size: 24))
-          .foregroundColor(color)
-          .frame(width: 32)
-        
-        Text(value)
-          .font(.system(size: 17))
-          .textSelection(.enabled)
-      }
+/// ContactInfoRow component for UserDetailView
+private struct ContactInfoRow: View {
+  let icon: String
+  let value: String
+  let color: Color
+
+  var body: some View {
+    HStack(spacing: 16) {
+      Image(systemName: icon)
+        .font(.title2)
+        .foregroundStyle(color)
+        .frame(width: 32)
+
+      Text(value)
+        .foregroundStyle(.primary)
+        .font(.headline)
+        .fontWeight(.light)
     }
   }
 }
 
 #Preview {
-  UserDetailView(userId: 2)
+  UserDetailView(
+    userId: 2,
+    viewModel: UserDetailViewModel(
+      repository: UserRepository(
+        apiClient: NetworkService(),
+        databaseClient: LocalDataStorage()
+      )
+    )
+  )
 }

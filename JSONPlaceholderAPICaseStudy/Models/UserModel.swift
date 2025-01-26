@@ -7,8 +7,12 @@
 
 import Foundation
 
-// Represents a user object with all necessary details.
-// Conforms to Identifiable and Codable for use in SwiftUI lists and easy encoding/decoding.
+/// Model representing a user in the system.
+///
+/// This struct contains all necessary user information and conforms to both
+/// Identifiable for SwiftUI list rendering and Codable for JSON serialization.
+///
+/// - Note: Used as the base model throughout the application
 struct User: Identifiable, Codable {
   let id: Int
   let name: String
@@ -17,8 +21,9 @@ struct User: Identifiable, Codable {
   let website: String
 }
 
-// Represents a simplified version of the User object for list displays in the UI.
-// Extracts only the necessary fields (id, name, email) for better performance and reduced data handling.
+/// Initialize list item from User model
+/// - Parameter user: Source User object
+/// - Discussion: Extracts only fields needed for list display
 struct UserListItem: Identifiable {
   let id: Int
   let name: String
@@ -31,8 +36,9 @@ struct UserListItem: Identifiable {
   }
 }
 
-// Represents a detailed version of the User object for the detail view in the UI.
-// Contains all user properties for comprehensive display.
+/// Initialize detail item from User model
+/// - Parameter user: Source User object
+/// - Discussion: Formats all user fields for detail display
 struct UserDetailItem: Identifiable {
   let id: Int
   let name: String

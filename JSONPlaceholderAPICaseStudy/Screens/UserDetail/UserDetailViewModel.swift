@@ -6,24 +6,34 @@
 //
 
 import Foundation
+import OSLog
 
-// Manages the logic for fetching and displaying details of a specific user.
-// Utilizes UserRepositoryProtocol for fetching data from the network or local storage.
+/// View Model for user detail screen
 @Observable
 class UserDetailViewModel {
+  /// Formatted user for detail display
+  /// - Discussion: Contains all user fields formatted for detail view
   var user: UserDetailItem?
+
+  /// Fetches and formats specific user
+  /// - Parameter id: User's unique identifier
+  /// - Discussion: Transforms raw User into UserDetailItem
   private let repository: UserRepositoryProtocol
 
-  init(repository: UserRepositoryProtocol = UserRepository()) {
+  /// Initializes view model with injected repository
+  /// - Parameter repository: Repository implementation for data operations
+  /// - Discussion: Repository must be provided by Coordinator
+  init(repository: UserRepositoryProtocol) {
     self.repository = repository
   }
 
+  /// Fetches and formats user details
+  /// - Parameter id: Target user's unique identifier
+  /// - Discussion: Asynchronously loads user and converts to detail format
+  /// - Important: Should be called when view appears
   func fetchUser(id: Int) async {
-    do {
-      let rawUser = try await repository.getSingleUser(userId: id)
+    if let rawUser = await repository.getSingleUser(userId: id) {
       user = UserDetailItem(user: rawUser)
-    } catch {
-      print("Error fetching user: \(error)")
     }
   }
 }

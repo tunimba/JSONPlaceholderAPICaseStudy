@@ -7,23 +7,16 @@
 
 import SwiftUI
 
-// Displays a list of users fetched from the server.
-// Uses UserListViewModel to manage the data and navigation to the detail view.
+/// View displaying a list of users with navigation capabilities.
 struct UserListView: View {
-  let viewModel = UserListViewModel()
-  @Environment(\.colorScheme) var colorScheme
-  let colors: [Color] = [.blue, .green, .orange, .purple, .red, .yellow]
+  let viewModel: UserListViewModel
+  let coordinator: UserListCoordinator
 
   var body: some View {
     NavigationView {
       List {
         ForEach(viewModel.users) { user in
-          NavigationLink(destination: UserDetailView(userId: user.id)) {
-            HStack(spacing: 16) {
-              Image(systemName: "person.circle.fill")
-                .foregroundColor(colors[user.id % colors.count])
-                .font(.largeTitle)
-
+          NavigationLink(destination: coordinator.showUserDetail(userId: user.id)) {
               VStack(alignment: .leading, spacing: 8) {
                 Text(user.name)
                   .font(.subheadline)
@@ -32,9 +25,8 @@ struct UserListView: View {
 
                 Text(user.email)
                   .font(.footnote)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(.secondary)
               }
-            }
             .padding(.vertical, 4)
           }
           .listRowBackground(Color.clear)
@@ -50,5 +42,10 @@ struct UserListView: View {
 }
 
 #Preview {
-    UserListView()
+  UserListView(
+    viewModel: UserListViewModel(
+      repository: UserRepository()
+    ),
+    coordinator: UserListCoordinator.shared
+  )
 }

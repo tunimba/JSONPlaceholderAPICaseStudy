@@ -6,24 +6,38 @@
 //
 
 import Foundation
+import OSLog
 
-// Handles the logic for fetching and managing a list of users to be displayed in the UI.
-// Uses UserRepositoryProtocol for data retrieval, ensuring flexibility and testability.
+/// View model managing user list presentation logic.
+///
+/// Handles:
+/// - Data fetching
+/// - List management
+/// - UI state updates
+///
+/// - Important: Uses `@Observable` for SwiftUI integration
 @Observable
 class UserListViewModel {
+  /// Formatted users for display
+  /// - Discussion: Contains only necessary fields for list display
   var users: [UserListItem] = []
+  
+  /// Fetches and formats users for display
+  /// - Discussion: Transforms raw User objects into UserListItems
   private let repository: UserRepositoryProtocol
 
-  init(repository: UserRepositoryProtocol = UserRepository()) {
+  /// Initializes view model with injected repository
+  /// - Parameter repository: Repository implementation for data operations
+  /// - Discussion: Repository must be provided by Coordinator
+  init(repository: UserRepositoryProtocol) {
     self.repository = repository
   }
 
+  /// Fetches and formats users for display
+  /// - Discussion: Asynchronously loads users from repository and maps to list items
+  /// - Important: Should be called when view appears
   func fetchUsers() async {
-    do {
-      let rawUsers = try await repository.getAllUsers()
-      users = rawUsers.map { UserListItem(user: $0) }
-    } catch {
-      print("Error fetching users: \(error)")
-    }
+    let rawUsers = await repository.getAllUsers()
+    users = rawUsers.map { UserListItem(user: $0) }
   }
 }

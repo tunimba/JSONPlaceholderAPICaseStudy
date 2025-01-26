@@ -6,29 +6,47 @@
 //
 
 import Foundation
+import OSLog
 
-// Implements the UserStorageProtocol to manage user data using UserDefaults.
-// Provides basic functionalities for saving and retrieving users persistently.
+
+/// UserDefaults-based implementation of UserStorageProtocol.
 class LocalDataStorage: UserStorageProtocol {
+  /// UserDefaults instance for data persistence
   private let defaults = UserDefaults.standard
+  /// Key for storing user data in UserDefaults
   private let key = "saved_users"
 
-  func getAllUsers() -> [User] {
+  /// Gets all stored users as dictionary
+  /// - Returns: Dictionary of users with ID as key
+  /// - Discussion: O(1) access time for individual users
+  func getAllUsers() -> [Int: User] {
     guard let data = defaults.data(forKey: key),
           let users = try? JSONDecoder().decode([User].self, from: data)
     else {
-      return []
+      Logger.storage.notice("No users in storage")
+      return [:]
     }
-    return users
+    let userDict = Dictionary(uniqueKeysWithValues: users.lazy.map { ($0.id, $0) })
+    Logger.storage.debug("Retrieved \(users.count) users")
+    return userDict
   }
 
+  /// Gets user by ID with O(1) access
+  /// - Parameter userId: Target user ID
+  /// - Returns: User if found, nil otherwise
   func getSingleUser(userId: Int) -> User? {
-    return getAllUsers().first { $0.id == userId }
+    return getAllUsers()[userId]
   }
 
+  /// Saves users to storage
+  /// - Parameter users: Users to save
   func saveUsers(users: [User]) {
-    if let encoded = try? JSONEncoder().encode(users) {
+    do {
+      let encoded = try JSONEncoder().encode(users)
       defaults.set(encoded, forKey: key)
+      Logger.storage.debug("Saved \(users.count) users")
+    } catch {
+      Logger.storage.error("Save failed: \(error.localizedDescription)")
     }
   }
 }

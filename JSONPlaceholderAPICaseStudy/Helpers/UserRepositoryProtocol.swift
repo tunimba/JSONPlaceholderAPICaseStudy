@@ -7,9 +7,20 @@
 
 import Foundation
 
-// Defines the operations for managing user data.
-// Abstracts the implementation details of user data retrieval and storage.
+/// Protocol defining the contract for user data management operations.
+///
+/// Implementations of this protocol are responsible for coordinating data operations between
+/// different data sources (network, local storage, etc.)
+///
+/// - Important: This protocol is the main interface for accessing user data in the application.
 protocol UserRepositoryProtocol {
-  func getAllUsers() async throws -> [User]
-  func getSingleUser(userId: Int) async throws -> User
+  /// Fetches all users from the data source.
+  /// - Returns: Array of User objects
+  /// - Note: May return empty array if fetch fails
+  func getAllUsers() async -> [User]
+  
+  /// Fetches a specific user by their ID.
+  /// - Parameter userId: The unique identifier of the user
+  /// - Returns: Optional User object, nil if not found
+  func getSingleUser(userId: Int) async -> User?
 }
