@@ -12,7 +12,7 @@ Bu proje, bir **case study** olarak **JSONPlaceholder** servisine ait `/users` e
 ## 1) Depoyu Klonla
 
 git clone https://github.com/tunimba/JSONPlaceholderAPICaseStudy.git ya da
-Proje dosyasını indirin.
+proje dosyasını indirin.
 
 ## 2) Projenin Açılması
 
