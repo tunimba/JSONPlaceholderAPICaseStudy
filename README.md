@@ -35,8 +35,8 @@ proje dosyasını indirin.
 # Gereksinimler
 
 * iOS 17.0+
-* (Herhangi bir harici paket yönetimi aracı kullanılmamıştır.)
-  
+
 # Ek Not
 
 * İnternet bağlantısı gereklidir (API çağrısı için).
+* (Herhangi bir harici paket yönetimi aracı kullanılmamıştır.)
