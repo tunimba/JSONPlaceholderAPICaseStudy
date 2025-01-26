@@ -35,16 +35,6 @@
 			path = JSONPlaceholderAPICaseStudy;
 			sourceTree = "<group>";
 		};
-		F28339AC2D432F000058A716 /* JSONPlaceholderAPICaseStudyTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = JSONPlaceholderAPICaseStudyTests;
-			sourceTree = "<group>";
-		};
-		F28339B62D432F000058A716 /* JSONPlaceholderAPICaseStudyUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = JSONPlaceholderAPICaseStudyUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				F283399B2D432EFD0058A716 /* JSONPlaceholderAPICaseStudy */,
-				F28339AC2D432F000058A716 /* JSONPlaceholderAPICaseStudyTests */,
-				F28339B62D432F000058A716 /* JSONPlaceholderAPICaseStudyUITests */,
 				F283399A2D432EFD0058A716 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,9 +118,6 @@
 			dependencies = (
 				F28339AB2D432F000058A716 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				F28339AC2D432F000058A716 /* JSONPlaceholderAPICaseStudyTests */,
-			);
 			name = JSONPlaceholderAPICaseStudyTests;
 			packageProductDependencies = (
 			);
@@ -152,9 +137,6 @@
 			);
 			dependencies = (
 				F28339B52D432F000058A716 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				F28339B62D432F000058A716 /* JSONPlaceholderAPICaseStudyUITests */,
 			);
 			name = JSONPlaceholderAPICaseStudyUITests;
 			packageProductDependencies = (
