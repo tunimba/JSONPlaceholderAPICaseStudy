@@ -1,6 +1,6 @@
 # Proje Açıklaması (Case Study)
 
-Bu proje, bir **case study** olarak **JSONPlaceholder** servisine ait `/users` endpoint'ini kullanarak geliştirilmiştir.
+Bu proje, bir **case study** olarak **JSONPlaceholder** API servisine ait `/users` endpoint'ini kullanarak geliştirilmiştir.
 
 ## Özellikler
 
