@@ -23,7 +23,7 @@ class UserRepository: UserRepositoryProtocol {
   private let apiClient: UserNetworkProtocol
 
   /// Storage client for local data persistence
-  private let databaseClient: UserStorageProtocol
+  private let databaseClient: LocalDataStorageProtocol
 
 
   /// Initializes repository with network and storage implementations
@@ -32,7 +32,7 @@ class UserRepository: UserRepositoryProtocol {
   ///   - databaseClient: Storage client implementation
   /// - Discussion: Uses default implementations if none provided
   init(apiClient: UserNetworkProtocol = NetworkService(),
-       databaseClient: UserStorageProtocol = LocalDataStorage()) {
+       databaseClient: LocalDataStorageProtocol = LocalDataStorage()) {
     self.apiClient = apiClient
     self.databaseClient = databaseClient
   }

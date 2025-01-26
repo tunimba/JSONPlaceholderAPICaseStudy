@@ -1,5 +1,5 @@
 //
-//  UserStorageProtocol.swift
+//  LocalDataStorageProtocol.swift
 //  JSONPlaceholderAPICaseStudy
 //
 //  Created by Tunahan Aktay on 24.01.2025.
@@ -8,7 +8,7 @@
 import Foundation
 
 /// Protocol defining operations for persistent user data storage.
-protocol UserStorageProtocol {
+protocol LocalDataStorageProtocol {
   /// Retrieves all users from storage
   /// - Returns: Dictionary of users with their IDs as keys
   func getAllUsers() -> [Int: User]

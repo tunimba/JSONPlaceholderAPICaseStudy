@@ -9,8 +9,8 @@ import Foundation
 import OSLog
 
 
-/// UserDefaults-based implementation of UserStorageProtocol.
-class LocalDataStorage: UserStorageProtocol {
+/// UserDefaults-based implementation of LocalDataStorageProtocol.
+class LocalDataStorage: LocalDataStorageProtocol {
   /// UserDefaults instance for data persistence
   private let defaults = UserDefaults.standard
   /// Key for storing user data in UserDefaults
