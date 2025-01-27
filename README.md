@@ -1,43 +1,31 @@
-# Proje Açıklaması (Case Study)
+# Project Description (Case Study)
 
-Bu proje, bir **case study** olarak **JSONPlaceholder** API servisine ait `/users` endpoint'ini kullanarak geliştirilmiştir.
+This project has been developed as a case study using the /users endpoint of the JSONPlaceholder API service.
 
-## Özellikler
+## Features
 
-* Ana ekranda kullanıcıların **isim** ve **email** bilgileri bir liste halinde gösterilir.
-* Her bir kullanıcıya tıklandığında **detay ekranı** açılır ve seçili kullanıcıya ait **isim**, **email**, **telefon numarası** ve **web sitesi** bilgileri görüntülenir.
+* The main screen displays users' names and email information in a list format.
+* Tapping on a user opens a detail screen showing the selected user's name, email, phone number, and website information.
 
-# Nasıl Çalıştırılır?
-
-## 1) Depoyu Klonla
-
-git clone https://github.com/tunimba/JSONPlaceholderAPICaseStudy.git ya da
-proje dosyasını indirin.
-
-## 2) Projenin Açılması
-
-* Proje klasöründeki .xcodeproj dosyasına çift tıklayarak Xcode'da açın.
-
-## 3) Cihaz veya Simülatör Seçimi
-
-* Xcode menüsünden, projeyi çalıştıracağınız iPhone veya simülatörü seçin (Örnek: iPhone 14 Pro).
-
-## 4) Derleme ve Çalıştırma
-
-* Sol üstteki “Run” (►) butonuna basın veya Cmd + R kısayolunu kullanın.
-* Uygulama başarıyla derlendikten sonra seçtiğiniz cihaza/simülatöre yüklenecektir.
-
-## 5) Kullanım
-
-* Uygulama açıldığında otomatik olarak JSONPlaceholder’dan kullanıcı verisi çeker ve bir liste halinde gösterir.
-* Liste elemanına dokunduğunuzda kullanıcıya özel detay sayfasına yönlendirilirsiniz.
-
-# Gereksinimler
+# Requirements
 
 * iOS 17.0+
+* Xcode 15.0+
+* No additional installation required as no third-party dependencies are used.
 
-# Ek Not
+# How to Run
 
-* Uygulamanın kullanımı için internet bağlantısı gereklidir (API çağrısı için). Fakat internetsiz kullanımla test edebilmek için mock datalar kod olarak sağlanmaktadır.
-* (Herhangi bir harici paket yönetimi aracı kullanılmamıştır.)
-* Kodlar test edilebilmeye uygundur fakat kod testleri vakit göz önünde bulundurularak yazılmamıştır.
+* Clone the repository using git clone https://github.com/tunimba/JSONPlaceholderAPICaseStudy.git or download the project files.
+* Open the .xcodeproj file in the project folder by double-clicking to launch in Xcode.
+* From the Xcode menu, select your target iPhone or simulator (Example: iPhone 14 Pro).
+* Press the "Run" (►) button.
+
+
+# Additional Notes
+
+* Internet connection is required for the app's full functionality (API calls). However, mock data is provided in code to support testing and SwiftUI previews in offline scenarios.
+* The code is designed with testability in mind, however, unit tests were not implemented due to time constraints.
+
+# Architectural Diagram
+
+![Architectural Diagram drawio](https://github.com/user-attachments/assets/334a836d-d5ad-4042-9a09-671702b95b30)
