@@ -13,7 +13,6 @@ import OSLog
 /// The repository acts as a single source of truth for user data, handling:
 /// - Data fetching from network.
 /// - Local storage operations.
-/// - Caching logic.
 class UserRepository: UserRepositoryProtocol {
   
   /// Network client for fetching user data.
@@ -38,15 +37,14 @@ class UserRepository: UserRepositoryProtocol {
   func getAllUsers() async -> [User] {
     do {
       let users = try await networkClient.fetchUsers()
-      let userDictionary = Dictionary(uniqueKeysWithValues: users.map { ($0.id, $0) })
-      databaseClient.saveUsers(users: userDictionary)
+      databaseClient.saveUsers(users: users)
       return users
     } catch {
       Logger.networking.error("Failed to fetch users: \(error.localizedDescription)")
       return []
     }
   }
-  
+
   /// Retrieves a single user by ID.
   /// - Parameter userId: User's ID
   /// - Returns: User if found, nil if not

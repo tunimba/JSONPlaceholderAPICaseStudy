@@ -38,9 +38,10 @@ class LocalDataStorage: LocalDataStorageProtocol {
 
   /// Stores users in UserDefaults.
   /// - Parameter users: Dictionary of users to store.
-  func saveUsers(users: [Int: User]) {
+  func saveUsers(users: [User]) {
     do {
-      let encoded = try JSONEncoder().encode(users)
+      let userDictionary = Dictionary(uniqueKeysWithValues: users.map { ($0.id, $0) })
+      let encoded = try JSONEncoder().encode(userDictionary)
       defaults.set(encoded, forKey: key)
       Logger.storage.debug("Saved \(users.count) users")
     } catch {

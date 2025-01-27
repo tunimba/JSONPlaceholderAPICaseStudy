@@ -25,16 +25,16 @@ class MockLocalDataStorage: LocalDataStorageProtocol {
       website: "www.janedoe.com"
     )
   ]
-  
+
   func getAllUsers() -> [Int: User] {
     return mockUsers
   }
-  
+
   func getSingleUser(userId: Int) -> User? {
     return mockUsers[userId]
   }
-  
-  func saveUsers(users: [Int: User]) {
-    mockUsers = users
+
+  func saveUsers(users: [User]) {
+    mockUsers = Dictionary(uniqueKeysWithValues: users.map { ($0.id, $0) })
   }
 }

@@ -13,10 +13,7 @@ class NetworkService: NetworkServiceProtocol {
   
   /// Fetches users from the JSONPlaceholder API.
   /// - Returns: Array of User items.
-  /// - Throws: NetworkError cases:
-  ///   - invalidURL: If API URL is malformed.
-  ///   - invalidResponse: If response isn't HTTP.
-  ///   - invalidStatusCode: If status code isn't 2xx.
+  /// - Throws: NetworkError: invalidURL || invalidResponse || invalidStatusCode
   /// - Discussion: Makes async HTTP request to fetch users, handles response validation.
   ///   and JSON decoding. Logs all network operations and errors.
   func fetchUsers() async throws -> [User] {

@@ -12,10 +12,12 @@ import OSLog
 @Observable
 class UserDetailViewModel {
   
-  /// Formatted use itemr for detail display.
+  /// Formatted user item for detail display.
   var user: UserDetailItem?
   
-  /// Fetches and format user for display.
+  /// Handles all data operations for users.
+  /// Acts as single source of truth for user data.
+  /// Manages both network and local storage operations.
   private let repository: UserRepositoryProtocol
   
   /// Initializes view model

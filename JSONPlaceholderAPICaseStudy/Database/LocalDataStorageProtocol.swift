@@ -20,6 +20,6 @@ protocol LocalDataStorageProtocol {
   func getSingleUser(userId: Int) -> User?
 
   /// Saves users to persistent storage.
-  /// - Parameter users: Dictionary of users to save.
-  func saveUsers(users: [Int: User])
+  /// - Parameter users: Array of users to save.
+  func saveUsers(users: [User])
 }

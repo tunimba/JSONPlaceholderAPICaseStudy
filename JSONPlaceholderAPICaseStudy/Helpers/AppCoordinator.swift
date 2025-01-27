@@ -13,14 +13,14 @@ import SwiftUI
 /// - Creates views.
 /// - Sets up dependencies.
 /// - Controls navigation.
-///
-/// - Important: Implemented as a singleton to maintain single source of truth.
 final class AppCoordinator {
   
   /// Shared instance for singleton pattern.
   static let shared = AppCoordinator()
 
-  /// Repository instance for data operations.
+  /// Handles all data operations for users.
+  /// Acts as single source of truth for user data.
+  /// Manages both network and local storage operations.
   private let repository: UserRepositoryProtocol
 
   /// Private init for singleton.

@@ -24,6 +24,7 @@ class MockNetworkService: NetworkServiceProtocol {
         email: "janedoe@gmail.com",
         phone: "2168457694",
         website: "www.janedoe.com"
-      )]
+      )
+    ]
   }
 }

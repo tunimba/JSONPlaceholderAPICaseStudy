@@ -8,9 +8,6 @@
 import Foundation
 
 /// Protocol defining the contract for user data management operations.
-///
-/// Implementations of this protocol are responsible for coordinating data operations between.
-/// different data sources (network, local storage, etc.)
 protocol UserRepositoryProtocol {
 
   /// Gets all users from the data source.

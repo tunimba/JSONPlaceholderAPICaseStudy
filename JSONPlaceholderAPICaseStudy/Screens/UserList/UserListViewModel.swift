@@ -34,8 +34,10 @@ class UserListViewModel {
   /// Manages both network and local storage operations.
   private let repository: UserRepositoryProtocol
   
-  /// Initializes view model with injected repository.
-  /// - Parameter repository: Repository implementation for data operations.
+  /// Initializes view model.
+  /// - Parameters:
+  ///   - repository: Repository implementation for data operations.
+  ///   - coordinator: Managing navigation and dependency injection for the user flow.
   init(repository: UserRepositoryProtocol, coordinator: AppCoordinator) {
     self.repository = repository
     self.coordinator = coordinator
@@ -50,7 +52,7 @@ class UserListViewModel {
   
   /// Handles navigation when a user is selected.
   /// - Parameter userId: The ID of the selected user.
-  /// - Returns: User detail view  for the selected user.
+  /// - Returns: User detail view for the selected user.
   func userTapped(userId: Int) -> some View {
     coordinator.showUserDetail(userId: userId)
   }

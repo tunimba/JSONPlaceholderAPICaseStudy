@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Protocol defining network operations for user.
+/// Protocol defining network operations..
 protocol NetworkServiceProtocol {
   
   /// Fetches all users from the network.
