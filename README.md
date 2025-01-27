@@ -38,5 +38,6 @@ proje dosyasını indirin.
 
 # Ek Not
 
-* İnternet bağlantısı gereklidir (API çağrısı için).
+* Uygulamanın kullanımı için internet bağlantısı gereklidir (API çağrısı için). Fakat internetsiz kullanımla test edebilmek için mock datalar kod olarak sağlanmaktadır.
 * (Herhangi bir harici paket yönetimi aracı kullanılmamıştır.)
+* Kodlar test edilebilmeye uygundur fakat kod testleri vakit göz önünde bulundurularak yazılmamıştır.
