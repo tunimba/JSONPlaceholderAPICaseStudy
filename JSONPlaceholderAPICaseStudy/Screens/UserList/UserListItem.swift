@@ -7,14 +7,14 @@
 
 import Foundation
 
-/// Initialize list item from User model
-/// - Parameter user: Source User object
-/// - Discussion: Extracts only fields needed for list display
+/// !tem to use in User List screen.
+/// - Parameter user: Source User item.
 struct UserListItem: Identifiable {
   let id: Int
   let name: String
   let email: String
-
+  
+  /// Initialize list item from User model.
   init(user: User) {
     self.id = user.id
     self.name = user.name

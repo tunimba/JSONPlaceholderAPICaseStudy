@@ -8,20 +8,16 @@
 import Foundation
 import OSLog
 
-/// Service handling network operations for user data.
-///
-/// Implements UserNetworkProtocol to provide concrete network functionality
-/// using URLSession for API requests.
-///
-/// - Important: Handles error cases and logging
-class NetworkService: UserNetworkProtocol {
-  /// Fetches users from the JSONPlaceholder API
-  /// - Returns: Array of User objects
+/// Service handling network operations.
+class NetworkService: NetworkServiceProtocol {
+  
+  /// Fetches users from the JSONPlaceholder API.
+  /// - Returns: Array of User items.
   /// - Throws: NetworkError cases:
-  ///   - invalidURL: If API URL is malformed
-  ///   - invalidResponse: If response isn't HTTP
-  ///   - invalidStatusCode: If status code isn't 2xx
-  /// - Discussion: Makes async HTTP request to fetch users, handles response validation
+  ///   - invalidURL: If API URL is malformed.
+  ///   - invalidResponse: If response isn't HTTP.
+  ///   - invalidStatusCode: If status code isn't 2xx.
+  /// - Discussion: Makes async HTTP request to fetch users, handles response validation.
   ///   and JSON decoding. Logs all network operations and errors.
   func fetchUsers() async throws -> [User] {
     guard let url = URL(string: "https://jsonplaceholder.typicode.com/users") else {

@@ -7,16 +7,17 @@
 
 import Foundation
 
-/// Initialize detail item from User model
-/// - Parameter user: Source User object
-/// - Discussion: Formats all user fields for detail display
+/// !tem to use in User Detail screen.
+/// - Parameter user: Source User item.
+/// - Discussion: Formats  user fields for detail display.
 struct UserDetailItem: Identifiable {
   let id: Int
   let name: String
   let email: String
   let phone: String
   let website: String
-
+  
+  /// Initialize detail item from User model.
   init(user: User) {
     self.id = user.id
     self.name = user.name

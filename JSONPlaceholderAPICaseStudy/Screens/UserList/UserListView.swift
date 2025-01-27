@@ -10,23 +10,22 @@ import SwiftUI
 /// View displaying a list of users with navigation capabilities.
 struct UserListView: View {
   let viewModel: UserListViewModel
-  let coordinator: UserListCoordinator
-
+  
   var body: some View {
     NavigationView {
       List {
         ForEach(viewModel.users) { user in
-          NavigationLink(destination: coordinator.showUserDetail(userId: user.id)) {
-              VStack(alignment: .leading, spacing: 8) {
-                Text(user.name)
-                  .font(.subheadline)
-                  .fontWeight(.regular)
-                  .lineLimit(1)
-
-                Text(user.email)
-                  .font(.footnote)
-                  .foregroundStyle(.secondary)
-              }
+          NavigationLink(destination: viewModel.userTapped(userId: user.id)) {
+            VStack(alignment: .leading, spacing: 8) {
+              Text(user.name)
+                .font(.subheadline)
+                .fontWeight(.regular)
+                .lineLimit(1)
+              
+              Text(user.email)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+            }
             .padding(.vertical, 4)
           }
           .listRowBackground(Color.clear)
@@ -44,8 +43,11 @@ struct UserListView: View {
 #Preview {
   UserListView(
     viewModel: UserListViewModel(
-      repository: UserRepository()
-    ),
-    coordinator: UserListCoordinator.shared
+      repository: UserRepository(
+        networkClient: MockNetworkService(),
+        databaseClient: LocalDataStorage()
+      ),
+      coordinator: AppCoordinator.shared
+    )
   )
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Enumeration of possible network operation errors.
+/// Network operation errors.
 enum NetworkError: Error {
   case invalidURL
   case invalidResponse

@@ -11,53 +11,32 @@ import SwiftUI
 struct UserDetailView: View {
   let userId: Int
   let viewModel: UserDetailViewModel
-
+  
   var body: some View {
     NavigationStack {
-    Group {
-      if let user = viewModel.user {
-        VStack {
-          Text(user.name)
-            .font(.title)
-
-          VStack(alignment: .leading, spacing: 24) {
-            ContactInfoRow(icon: "envelope.fill", value: user.email, color: .blue)
-            ContactInfoRow(icon: "phone.fill", value: user.phone, color: .green)
-            ContactInfoRow(icon: "globe", value: user.website, color: .purple)
+      Group {
+        if let user = viewModel.user {
+          VStack {
+            Text(user.name)
+              .font(.title)
+            
+            VStack(alignment: .leading, spacing: 24) {
+              Label(user.email, systemImage: "envelope.fill")
+              Label(user.phone, systemImage: "phone.fill")
+              Label(user.website, systemImage: "globe")
+            }
+            .font(.headline)
+            .fontWeight(.light)
+            .padding(24)
           }
-          .padding(24)
-          .padding(.horizontal)
+          Spacer()
+        } else {
+          ProgressView()
         }
-        .padding(.bottom, 256)
-      } else {
-        ProgressView()
-          .scaleEffect(1.5)
       }
     }
-  }
     .task {
-      await viewModel.fetchUser(id: userId)
-    }
-  }
-}
-
-/// ContactInfoRow component for UserDetailView
-private struct ContactInfoRow: View {
-  let icon: String
-  let value: String
-  let color: Color
-
-  var body: some View {
-    HStack(spacing: 16) {
-      Image(systemName: icon)
-        .font(.title2)
-        .foregroundStyle(color)
-        .frame(width: 32)
-
-      Text(value)
-        .foregroundStyle(.primary)
-        .font(.headline)
-        .fontWeight(.light)
+      viewModel.getUser(id: userId)
     }
   }
 }
@@ -67,8 +46,8 @@ private struct ContactInfoRow: View {
     userId: 2,
     viewModel: UserDetailViewModel(
       repository: UserRepository(
-        apiClient: NetworkService(),
-        databaseClient: LocalDataStorage()
+        networkClient: MockNetworkService(),
+        databaseClient: MockLocalDataStorage()
       )
     )
   )

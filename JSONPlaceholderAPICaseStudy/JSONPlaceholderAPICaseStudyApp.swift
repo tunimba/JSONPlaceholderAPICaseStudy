@@ -11,9 +11,9 @@ import SwiftUI
 struct JSONPlaceholderAPICaseStudyApp: App {
   /// Main scene of the application
   /// - Returns: Initial view of the application using coordinator pattern
-    var body: some Scene {
-        WindowGroup {
-          UserListCoordinator.shared.start()
-        }
+  var body: some Scene {
+    WindowGroup {
+      AppCoordinator.shared.start()
     }
+  }
 }

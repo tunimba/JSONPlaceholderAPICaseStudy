@@ -8,39 +8,37 @@
 import Foundation
 import OSLog
 
-
-/// UserDefaults-based implementation of LocalDataStorageProtocol.
+/// Stores user data using UserDefaults.
 class LocalDataStorage: LocalDataStorageProtocol {
-  /// UserDefaults instance for data persistence
+
+  /// UserDefaults instance for data persistence.
   private let defaults = UserDefaults.standard
-  /// Key for storing user data in UserDefaults
+  /// Key for storing user data in UserDefaults.
   private let key = "saved_users"
 
-  /// Gets all stored users as dictionary
-  /// - Returns: Dictionary of users with ID as key
-  /// - Discussion: O(1) access time for individual users
+  /// Gets all users from storage.
+  /// - Returns: Dictionary of users with ID as key.
   func getAllUsers() -> [Int: User] {
     guard let data = defaults.data(forKey: key),
-          let users = try? JSONDecoder().decode([User].self, from: data)
+          let users = try? JSONDecoder().decode([Int: User].self, from: data)
     else {
       Logger.storage.notice("No users in storage")
       return [:]
     }
-    let userDict = Dictionary(uniqueKeysWithValues: users.lazy.map { ($0.id, $0) })
     Logger.storage.debug("Retrieved \(users.count) users")
-    return userDict
+    return users
   }
-
-  /// Gets user by ID with O(1) access
-  /// - Parameter userId: Target user ID
-  /// - Returns: User if found, nil otherwise
+  
+  /// Gets a single user by ID.
+  /// - Parameter userId: The ID to look for.
+  /// - Returns: The user if found, nil if not.
   func getSingleUser(userId: Int) -> User? {
     return getAllUsers()[userId]
   }
 
-  /// Saves users to storage
-  /// - Parameter users: Users to save
-  func saveUsers(users: [User]) {
+  /// Stores users in UserDefaults.
+  /// - Parameter users: Dictionary of users to store.
+  func saveUsers(users: [Int: User]) {
     do {
       let encoded = try JSONEncoder().encode(users)
       defaults.set(encoded, forKey: key)

@@ -11,52 +11,46 @@ import OSLog
 /// Repository that manages users' data by coordinating between network and storage layers.
 ///
 /// The repository acts as a single source of truth for user data, handling:
-/// - Data fetching from network
-/// - Local storage operations
-/// - Caching logic
-///
-/// - Important: This class follows the Repository pattern to abstract data source implementation details.
-///
-/// - Note: Uses dependency injection for network and storage clients to support testing and flexibility.
+/// - Data fetching from network.
+/// - Local storage operations.
+/// - Caching logic.
 class UserRepository: UserRepositoryProtocol {
-  /// Network client for fetching user data
-  private let apiClient: UserNetworkProtocol
-
-  /// Storage client for local data persistence
+  
+  /// Network client for fetching user data.
+  private let networkClient: NetworkServiceProtocol
+  
+  /// Storage client for local data persistence.
   private let databaseClient: LocalDataStorageProtocol
-
-
-  /// Initializes repository with network and storage implementations
+  
+  /// Initializes repository with network and storage implementations.
   /// - Parameters:
-  ///   - apiClient: Network client implementation
-  ///   - databaseClient: Storage client implementation
-  /// - Discussion: Uses default implementations if none provided
-  init(apiClient: UserNetworkProtocol = NetworkService(),
-       databaseClient: LocalDataStorageProtocol = LocalDataStorage()) {
-    self.apiClient = apiClient
+  ///   - networkClient: NetworkServiceProtocol implementation.
+  ///   - databaseClient: LocalDataStorageProtocol implementation.
+  init(networkClient: NetworkServiceProtocol, databaseClient: LocalDataStorageProtocol) {
+    self.networkClient = networkClient
     self.databaseClient = databaseClient
   }
-
-  /// Fetches all users from network and saves to storage
-  /// - Returns: Array of User objects
+  
+  /// Fetches all users from network and saves to storage.
+  /// - Returns: Array of User items.
   /// - Discussion: First attempts to fetch from network, then saves to local storage.
   /// On failure, returns empty array and logs error.
   func getAllUsers() async -> [User] {
     do {
-      let users = try await apiClient.fetchUsers()
-      databaseClient.saveUsers(users: users)
+      let users = try await networkClient.fetchUsers()
+      let userDictionary = Dictionary(uniqueKeysWithValues: users.map { ($0.id, $0) })
+      databaseClient.saveUsers(users: userDictionary)
       return users
     } catch {
       Logger.networking.error("Failed to fetch users: \(error.localizedDescription)")
       return []
     }
   }
-
-  /// Retrieves a single user by ID
-  /// - Parameter userId: The unique identifier of the user
-  /// - Returns: Optional User object
-  /// - Discussion: Checks local storage first, then network if not found
-  func getSingleUser(userId: Int) async -> User? {
+  
+  /// Retrieves a single user by ID.
+  /// - Parameter userId: User's ID
+  /// - Returns: User if found, nil if not
+  func getSingleUser(userId: Int) -> User? {
     return databaseClient.getSingleUser(userId: userId)
   }
 }

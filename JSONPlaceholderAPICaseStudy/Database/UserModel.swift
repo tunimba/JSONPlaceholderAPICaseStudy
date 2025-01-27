@@ -7,13 +7,7 @@
 
 import Foundation
 
-/// Model representing a user in the system.
-///
-/// This struct contains all necessary user information and conforms to both
-/// Identifiable for SwiftUI list rendering and Codable for JSON serialization.
-///
-//
-/// - Note: Used as the base model throughout the application
+/// Raw user item fetched from API.
 struct User: Identifiable, Codable {
   let id: Int
   let name: String
