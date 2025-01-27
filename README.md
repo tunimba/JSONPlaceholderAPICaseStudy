@@ -1,4 +1,4 @@
-# Project Description (Case Study)
+# Project Description
 
 This project has been developed as a case study using the /users endpoint of the JSONPlaceholder API service.
 
